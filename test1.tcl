@@ -2,13 +2,7 @@
 
 
 proc client {opts} {
-#    variable opt_w
 
-#    set opt_w [array get opts{"w"}]
-#    puts "${w} : $opts(w)"
-
-#    puts $opts
-#    puts [lindex $opts 3]
     set opt_t_list [lassign $opts opt_w_min opt_w_max opt_b_min opt_b_max opt_n_min opt_n_max]
 
     puts "W: $opt_w_min .. $opt_w_max"
@@ -16,37 +10,17 @@ proc client {opts} {
     puts "N: $opt_n_min .. $opt_n_max"
     puts $opt_t_list
 
-#        || [[string compare $opt_w_max {}] == 0]
-#        || [[string compare $opt_b_min {}] == 0]
-#        || [[string compare $opt_b_max {}] == 0]
-#        || [[string compare $opt_n_min {}] == 0]
-#        || [[string compare $opt_n_max {}] == 0] } {
+    set opt_b_max ""
 
-#    if {   (${opt_w_min} == "") || (${opt_w_max} == "")
-#        || (${opt_b_min} == "") || (${opt_b_max} == ""})
-#        || (${opt_n_min} == "") || (${opt_n_max} == "") } {
-#        puts "Missing parameter"
-#    }
+    if {   ($opt_w_min eq {}) || ($opt_w_max eq {})
+        || ($opt_b_min eq {}) || ($opt_b_max eq {})
+        || ($opt_n_min eq {}) || ($opt_n_max eq {})
+        || ($opt_t_list eq {}) } {
+        puts "Missing parameter"
 
-#    if {   ($opt_w_min == "") || ($opt_w_max == "")
-#        || ($opt_b_min == "") || ($opt_b_max == ""})
-#        || ($opt_n_min == "") || ($opt_n_max == "") } {
-#        puts "Missing parameter"
-#    }
-
-#    if {   ($opt_w_min eq {}) || ($opt_w_max eq {})
-#        || ($opt_b_min eq {}) || ($opt_b_max eq {})
-#        || ($opt_n_min eq {}) || ($opt_n_max eq {}) } {
-#        puts "Missing parameter"
-#    }
-
-#    if {   {$opt_w_min eq {}} || {$opt_w_max eq {}}
-#        || {$opt_b_min eq {}} || {$opt_b_max eq {}}
-#        || {$opt_n_min eq {}} || {$opt_n_max eq {}} } {
-#        puts "Missing parameter"
-#    }
-
-    puts "Good parameters"
+    } else {
+        puts "Good parameters"
+    }
 }
 
 proc main {} {
